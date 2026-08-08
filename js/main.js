@@ -66,6 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* 2b) Header : fond flouté dès qu'on quitte le haut de la page ------------ */
+  var nav = document.getElementById("nav");
+  if (nav) {
+    var onScroll = function () { nav.classList.toggle("is-stuck", window.scrollY > 12); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   /* 3) Animations d'apparition au scroll (discrètes) ----------------------- */
   var reveals = document.querySelectorAll(".reveal");
 

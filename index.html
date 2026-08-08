@@ -38,28 +38,60 @@
   <!-- Polices : Noto Sans Armenian (texte arménien) + IBM Plex Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
         rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
+<body id="top">
+
+  <!-- ====================================================================
+       SPRITE D'ICÔNES (SVG line icons, réutilisés via <use>)
+       ==================================================================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18M18 6 6 18"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="m16 10.5 5-2.6v8.2l-5-2.6z"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2.5"/><path d="M9.7 2.6V5M14.3 2.6V5M9.7 19v2.4M14.3 19v2.4M2.6 9.7H5M2.6 14.3H5M19 9.7h2.4M19 14.3h2.4"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13h6M9 16.5h4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 16v-3.5M12.5 16V9M17 16V6.5"/></symbol>
+    <symbol id="i-task" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4.2V3.6A1.6 1.6 0 0 1 10.6 2h2.8A1.6 1.6 0 0 1 15 3.6v.6"/><path d="m9 13 2.2 2.2L15.5 11"/></symbol>
+    <symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.8 12c0 1.6-1.3 2.9-2.9 2.9S4 13.6 4 12s1.3-2.9 2.9-2.9c1.3 0 2.2.8 3.1 1.9l4 4.2c.9 1.1 1.8 1.9 3.1 1.9 1.6 0 2.9-1.3 2.9-2.9s-1.3-2.9-2.9-2.9c-1.3 0-2.2.8-3.1 1.9l-4 4.2"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="4.5" rx="1"/><path d="M5.5 12.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5v-6.5"/><path d="M12 8v12.5"/><path d="M12 8S10.7 4 8.5 4A2 2 0 1 0 8.5 8z"/><path d="M12 8s1.3-4 3.5-4A2 2 0 1 1 15.5 8z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.4V12l3 1.8"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 3c.5 3.9 2.1 5.5 6 6-3.9.5-5.5 2.1-6 6-.5-3.9-2.1-5.5-6-6 3.9-.5 5.5-2.1 6-6z"/></symbol>
+  </svg>
+
+  <!-- ====================================================================
+       HEADER (barre discrète, sticky)
+       ==================================================================== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#top">FORMULA</a>
+      <a class="nav__cta js-cta" href="#">Միանալ <svg class="ic ic--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </header>
 
   <!-- ====================================================================
        01 — HERO
        ==================================================================== -->
-  <header class="hero">
+  <section class="hero">
     <div class="hero__inner">
       <div class="hero__logo">
-        <img src="assets/formula-logo.jpeg" alt="FORMULA — logo" width="132" height="132" />
+        <img src="assets/formula-logo.jpeg" alt="FORMULA — logo" width="108" height="108" />
       </div>
+      <p class="hero__kicker">Instagram · վաճառքի համակարգ</p>
       <h1 class="hero__title">Instagram-ում վաճառքը սկսվում է ոչ թե լավ կոնտենտից, այլ <span class="accent">ճիշտ կառուցված համակարգից</span></h1>
       <p class="hero__lead">Դու կարող ես ունենալ գեղեցիկ էջ, որակյալ Reel-եր, ակտիվ սթորիներ և նույնիսկ հազարավոր դիտումներ։ Բայց եթե չգիտես, թե ինչ ճանապարհով պետք է մարդուն հասցնել գնման որոշման, Instagram-ը չի դառնա կայուն վաճառքի աղբյուր։</p>
       <p class="hero__sub">FORMULA-ն Instagram-ում վաճառքի համակարգ ստեղծելու էքսպրես դասընթաց է, որը կօգնի հասկանալ՝ ինչ, երբ և ինչու հրապարակել, որպեսզի քո կոնտենտը սկսի աշխատել վաճառքի համար։</p>
-      <!-- CTA achat -->
-      <a href="#" class="cta js-cta">Միացիր FORMULA-ին</a>
+      <div class="hero__actions">
+        <!-- CTA achat -->
+        <a href="#" class="cta js-cta">Միացիր FORMULA-ին <svg class="ic ic--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <span class="hero__price">45.000 դրամ <span class="hero__price-note">· մինչև սեպտեմբերի 30-ը</span></span>
+      </div>
     </div>
-  </header>
+  </section>
 
   <main>
 
@@ -68,13 +100,14 @@
          ================================================================== -->
     <section class="section reveal">
       <div class="container">
+        <div class="eyebrow"><span class="eyebrow__num">01</span><span class="eyebrow__rule"></span></div>
         <h2 class="section-title">Այս դասընթացը քեզ համար է, եթե…</h2>
         <div class="check-list">
-          <div class="check-item"><span class="check-item__mark" aria-hidden="true">✔</span><span class="check-item__text">Շատ ժամանակ ես ծախսում կոնտենտի վրա, բայց վաճառքները չեն համապատասխանում քո ներդրած աշխատանքին</span></div>
-          <div class="check-item"><span class="check-item__mark" aria-hidden="true">✔</span><span class="check-item__text">Մարդիկ հաճախ հարցնում են միայն գինը, հետո անհետանում</span></div>
-          <div class="check-item"><span class="check-item__mark" aria-hidden="true">✔</span><span class="check-item__text">Չգիտես՝ ինչ հերթականությամբ պետք է կառուցես կոնտենտը, որպեսզի այն վաճառի</span></div>
-          <div class="check-item"><span class="check-item__mark" aria-hidden="true">✔</span><span class="check-item__text">Չունես հստակ համակարգ և ամեն օր մտածում ես՝ ինչ հրապարակել</span></div>
-          <div class="check-item"><span class="check-item__mark" aria-hidden="true">✔</span><span class="check-item__text">Ուզում ես Instagram-ը դարձնել կանխատեսելի վաճառքի գործիք, ոչ թե պարզապես գեղեցիկ էջ</span></div>
+          <div class="check-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="check-item__text">Շատ ժամանակ ես ծախսում կոնտենտի վրա, բայց վաճառքները չեն համապատասխանում քո ներդրած աշխատանքին</span></div>
+          <div class="check-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="check-item__text">Մարդիկ հաճախ հարցնում են միայն գինը, հետո անհետանում</span></div>
+          <div class="check-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="check-item__text">Չգիտես՝ ինչ հերթականությամբ պետք է կառուցես կոնտենտը, որպեսզի այն վաճառի</span></div>
+          <div class="check-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="check-item__text">Չունես հստակ համակարգ և ամեն օր մտածում ես՝ ինչ հրապարակել</span></div>
+          <div class="check-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="check-item__text">Ուզում ես Instagram-ը դարձնել կանխատեսելի վաճառքի գործիք, ոչ թե պարզապես գեղեցիկ էջ</span></div>
         </div>
       </div>
     </section>
@@ -84,16 +117,17 @@
          ================================================================== -->
     <section class="section section--tint reveal">
       <div class="container">
+        <div class="eyebrow"><span class="eyebrow__num">02</span><span class="eyebrow__rule"></span></div>
         <h2 class="section-title">FORMULA-ում դու՝</h2>
         <div class="benefit-grid">
-          <div class="benefit"><span class="benefit__mark" aria-hidden="true">✔</span><span class="benefit__text">Կկառուցես վաճառքի համակարգ, որը կաշխատի քո բիզնեսի համար</span></div>
-          <div class="benefit"><span class="benefit__mark" aria-hidden="true">✔</span><span class="benefit__text">Կիմանաս, թե յուրաքանչյուր փուլում ինչ կոնտենտ է պետք և ինչ նպատակ է այն լուծում</span></div>
-          <div class="benefit"><span class="benefit__mark" aria-hidden="true">✔</span><span class="benefit__text">Կդադարես պատահական հրապարակումներ անել և կսկսես աշխատել ռազմավարությամբ</span></div>
-          <div class="benefit"><span class="benefit__mark" aria-hidden="true">✔</span><span class="benefit__text">Կհասկանաս, թե ինչու են մարդիկ հետաքրքրվում, բայց գնում են ուրիշից, և ինչպես փոխել այդ իրավիճակը</span></div>
-          <div class="benefit"><span class="benefit__mark" aria-hidden="true">✔</span><span class="benefit__text">Կսովորես ստեղծել կոնտենտ, որը ձևավորում է վստահություն և մեծացնում վաճառքի հավանականությունը</span></div>
-          <div class="benefit"><span class="benefit__mark" aria-hidden="true">✔</span><span class="benefit__text">Կբացահայտես, թե վաճառքի որ փուլում ես կորցնում ամենաշատ հաճախորդներին և ինչպես շտկել դա</span></div>
-          <div class="benefit"><span class="benefit__mark" aria-hidden="true">✔</span><span class="benefit__text">Կստանաս պատրաստի վաճառքի սխեմաներ, որոնք անմիջապես կհարմարեցնես քո բիզնեսին՝ անկախ ոլորտից</span></div>
-          <div class="benefit"><span class="benefit__mark" aria-hidden="true">✔</span><span class="benefit__text">Կունենաս համակարգ, որը կաշխատի ոչ միայն այսօր, այլ նաև քո բոլոր ապագա վաճառքների համար</span></div>
+          <div class="benefit"><span class="mark mark--ghost"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="benefit__text">Կկառուցես վաճառքի համակարգ, որը կաշխատի քո բիզնեսի համար</span></div>
+          <div class="benefit"><span class="mark mark--ghost"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="benefit__text">Կիմանաս, թե յուրաքանչյուր փուլում ինչ կոնտենտ է պետք և ինչ նպատակ է այն լուծում</span></div>
+          <div class="benefit"><span class="mark mark--ghost"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="benefit__text">Կդադարես պատահական հրապարակումներ անել և կսկսես աշխատել ռազմավարությամբ</span></div>
+          <div class="benefit"><span class="mark mark--ghost"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="benefit__text">Կհասկանաս, թե ինչու են մարդիկ հետաքրքրվում, բայց գնում են ուրիշից, և ինչպես փոխել այդ իրավիճակը</span></div>
+          <div class="benefit"><span class="mark mark--ghost"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="benefit__text">Կսովորես ստեղծել կոնտենտ, որը ձևավորում է վստահություն և մեծացնում վաճառքի հավանականությունը</span></div>
+          <div class="benefit"><span class="mark mark--ghost"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="benefit__text">Կբացահայտես, թե վաճառքի որ փուլում ես կորցնում ամենաշատ հաճախորդներին և ինչպես շտկել դա</span></div>
+          <div class="benefit"><span class="mark mark--ghost"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="benefit__text">Կստանաս պատրաստի վաճառքի սխեմաներ, որոնք անմիջապես կհարմարեցնես քո բիզնեսին՝ անկախ ոլորտից</span></div>
+          <div class="benefit"><span class="mark mark--ghost"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="benefit__text">Կունենաս համակարգ, որը կաշխատի ոչ միայն այսօր, այլ նաև քո բոլոր ապագա վաճառքների համար</span></div>
         </div>
       </div>
     </section>
@@ -103,14 +137,15 @@
          ================================================================== -->
     <section id="contenu" class="section reveal">
       <div class="container">
+        <div class="eyebrow"><span class="eyebrow__num">03</span><span class="eyebrow__rule"></span></div>
         <h2 class="section-title">Ի՞նչ է ներառում դասընթացը</h2>
         <div class="feature-grid">
-          <div class="feature-card"><span class="feature-card__icon" aria-hidden="true">🎥</span><span class="feature-card__text">12 գործնական վիդեոդաս</span></div>
-          <div class="feature-card feature-card--ai"><span class="feature-card__icon" aria-hidden="true">🤖</span><span class="feature-card__text">8 AI Assistant, որոնք կօգնեն յուրաքանչյուր թեման կիրառել հենց քո բիզնեսում</span></div>
-          <div class="feature-card"><span class="feature-card__icon" aria-hidden="true">📄</span><span class="feature-card__text">Workbook-ներ և աշխատանքային ֆայլեր</span></div>
-          <div class="feature-card"><span class="feature-card__icon" aria-hidden="true">📊</span><span class="feature-card__text">Պատրաստի վաճառքի սխեմաներ և աղյուսակներ</span></div>
-          <div class="feature-card"><span class="feature-card__icon" aria-hidden="true">📝</span><span class="feature-card__text">Գործնական առաջադրանքներ</span></div>
-          <div class="feature-card"><span class="feature-card__icon" aria-hidden="true">♾</span><span class="feature-card__text">Մշտական հասանելիություն բոլոր դասերին և նյութերին</span></div>
+          <article class="feature-card"><span class="feature-card__icon"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg></span><h3 class="feature-card__text">12 գործնական վիդեոդաս</h3></article>
+          <article class="feature-card feature-card--ai"><span class="feature-card__icon"><svg class="ic" aria-hidden="true"><use href="#i-ai"/></svg></span><h3 class="feature-card__text">8 AI Assistant, որոնք կօգնեն յուրաքանչյուր թեման կիրառել հենց քո բիզնեսում</h3></article>
+          <article class="feature-card"><span class="feature-card__icon"><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg></span><h3 class="feature-card__text">Workbook-ներ և աշխատանքային ֆայլեր</h3></article>
+          <article class="feature-card"><span class="feature-card__icon"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg></span><h3 class="feature-card__text">Պատրաստի վաճառքի սխեմաներ և աղյուսակներ</h3></article>
+          <article class="feature-card"><span class="feature-card__icon"><svg class="ic" aria-hidden="true"><use href="#i-task"/></svg></span><h3 class="feature-card__text">Գործնական առաջադրանքներ</h3></article>
+          <article class="feature-card"><span class="feature-card__icon"><svg class="ic" aria-hidden="true"><use href="#i-infinity"/></svg></span><h3 class="feature-card__text">Մշտական հասանելիություն բոլոր դասերին և նյութերին</h3></article>
         </div>
       </div>
     </section>
@@ -118,24 +153,55 @@
     <!-- ==================================================================
          05 — AI ASSISTANTS
          ================================================================== -->
-    <section id="ai" class="section section--glow reveal">
+    <section id="ai" class="section section--ai reveal">
       <div class="container">
+        <div class="eyebrow eyebrow--ai"><span class="eyebrow__num">04</span><span class="eyebrow__rule"></span></div>
         <div class="ai-panel">
           <div class="ai-panel__col">
             <div class="badge">AI ASSISTANTS</div>
             <h2 class="ai-panel__title">AI Assistant-ները՝ քո անձնական օգնականները</h2>
             <p class="ai-panel__text">Այսինքն՝ դու ոչ միայն կսովորես, այլև նույն պահին կկիրառես սովորածը քո բիզնեսում։</p>
             <div class="ai-panel__label">Յուրաքանչյուր AI Assistant կօգնի քեզ՝</div>
-            <div class="spark-list">
-              <div class="spark-item"><span aria-hidden="true">✨</span><span>կատարել առաջադրանքները</span></div>
-              <div class="spark-item"><span aria-hidden="true">✨</span><span>վերլուծել քո բիզնեսը</span></div>
-              <div class="spark-item"><span aria-hidden="true">✨</span><span>ստեղծել վաճառող կոնտենտ</span></div>
-              <div class="spark-item"><span aria-hidden="true">✨</span><span>գտնել նոր գաղափարներ</span></div>
-              <div class="spark-item"><span aria-hidden="true">✨</span><span>և անմիջապես կիրառել սովորածը հենց քո ոլորտում</span></div>
-            </div>
+            <ul class="spark-list">
+              <li class="spark-item"><svg class="ic ic--spark" aria-hidden="true"><use href="#i-spark"/></svg><span>կատարել առաջադրանքները</span></li>
+              <li class="spark-item"><svg class="ic ic--spark" aria-hidden="true"><use href="#i-spark"/></svg><span>վերլուծել քո բիզնեսը</span></li>
+              <li class="spark-item"><svg class="ic ic--spark" aria-hidden="true"><use href="#i-spark"/></svg><span>ստեղծել վաճառող կոնտենտ</span></li>
+              <li class="spark-item"><svg class="ic ic--spark" aria-hidden="true"><use href="#i-spark"/></svg><span>գտնել նոր գաղափարներ</span></li>
+              <li class="spark-item"><svg class="ic ic--spark" aria-hidden="true"><use href="#i-spark"/></svg><span>և անմիջապես կիրառել սովորածը հենց քո ոլորտում</span></li>
+            </ul>
           </div>
-          <!-- Visuel AI : placeholder néon (à remplacer par un vrai visuel si souhaité) -->
-          <div class="ai-visual" role="img" aria-label="Visuel AI Assistant"><span>VISUEL AI</span></div>
+          <!-- Visuel IA : réseau de nœuds (décoratif, pur SVG) -->
+          <div class="ai-visual" role="img" aria-label="AI Assistant">
+            <svg class="ai-orb" viewBox="0 0 260 260" fill="none" aria-hidden="true">
+              <defs>
+                <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.55"/>
+                  <stop offset="100%" stop-color="#6c5cff" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <circle cx="130" cy="130" r="120" fill="url(#orbGlow)"/>
+              <circle class="ai-orb__ring ai-orb__ring--1" cx="130" cy="130" r="96" stroke="rgba(139,123,255,0.28)" stroke-width="1" stroke-dasharray="3 7"/>
+              <circle class="ai-orb__ring ai-orb__ring--2" cx="130" cy="130" r="66" stroke="rgba(139,123,255,0.4)" stroke-width="1" stroke-dasharray="2 6"/>
+              <g stroke="rgba(139,123,255,0.5)" stroke-width="1">
+                <line x1="130" y1="130" x2="130" y2="34"/>
+                <line x1="130" y1="130" x2="213" y2="82"/>
+                <line x1="130" y1="130" x2="213" y2="178"/>
+                <line x1="130" y1="130" x2="130" y2="226"/>
+                <line x1="130" y1="130" x2="47" y2="178"/>
+                <line x1="130" y1="130" x2="47" y2="82"/>
+              </g>
+              <g fill="#0a0a16" stroke="#8b7bff" stroke-width="1.4">
+                <circle cx="130" cy="34" r="7"/>
+                <circle cx="213" cy="82" r="7"/>
+                <circle cx="213" cy="178" r="7"/>
+                <circle cx="130" cy="226" r="7"/>
+                <circle cx="47" cy="178" r="7"/>
+                <circle cx="47" cy="82" r="7"/>
+              </g>
+              <circle class="ai-orb__core" cx="130" cy="130" r="22" fill="rgba(108,92,255,0.18)" stroke="#8b7bff" stroke-width="1.5"/>
+              <svg x="115" y="115" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c9bff5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2.5"/><path d="M9.7 2.6V5M14.3 2.6V5M9.7 19v2.4M14.3 19v2.4M2.6 9.7H5M2.6 14.3H5M19 9.7h2.4M19 14.3h2.4"/></svg>
+            </svg>
+          </div>
         </div>
         <p class="ai-note">Դրանք պարզապես AI-ով հարց ու պատասխան չեն։ Յուրաքանչյուր Assistant ստեղծված է կոնկրետ թեմայի համար և ուղեկցում է քեզ մինչև արդյունքը։</p>
       </div>
@@ -144,15 +210,16 @@
     <!-- ==================================================================
          06 — RÉSULTATS
          ================================================================== -->
-    <section class="section section--border-top reveal">
+    <section class="section section--tint reveal">
       <div class="container">
+        <div class="eyebrow"><span class="eyebrow__num">05</span><span class="eyebrow__rule"></span></div>
         <h2 class="section-title">Դասընթացի ավարտին դու կունենաս</h2>
         <div class="result-list">
-          <div class="result-item"><span class="emoji" aria-hidden="true">✅</span><span>Քո բիզնեսին հարմարեցված վաճառքի հստակ համակարգ</span></div>
-          <div class="result-item"><span class="emoji" aria-hidden="true">✅</span><span>Կոնտենտի ռազմավարություն, որը կհասկանաս ինչպես կիրառել</span></div>
-          <div class="result-item"><span class="emoji" aria-hidden="true">✅</span><span>Պատրաստի ֆայլեր և աշխատանքային գործիքներ</span></div>
-          <div class="result-item"><span class="emoji" aria-hidden="true">✅</span><span>AI օգնականներ, որոնց կկարողանաս օգտագործել նաև դասընթացից հետո</span></div>
-          <div class="result-item"><span class="emoji" aria-hidden="true">✅</span><span>Համակարգ, որը կծառայի քեզ յուրաքանչյուր նոր առաջարկի, ծառայության կամ պրոդուկտի վաճառքի ժամանակ</span></div>
+          <div class="result-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span>Քո բիզնեսին հարմարեցված վաճառքի հստակ համակարգ</span></div>
+          <div class="result-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span>Կոնտենտի ռազմավարություն, որը կհասկանաս ինչպես կիրառել</span></div>
+          <div class="result-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span>Պատրաստի ֆայլեր և աշխատանքային գործիքներ</span></div>
+          <div class="result-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span>AI օգնականներ, որոնց կկարողանաս օգտագործել նաև դասընթացից հետո</span></div>
+          <div class="result-item"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span>Համակարգ, որը կծառայի քեզ յուրաքանչյուր նոր առաջարկի, ծառայության կամ պրոդուկտի վաճառքի ժամանակ</span></div>
         </div>
       </div>
     </section>
@@ -160,17 +227,18 @@
     <!-- ==================================================================
          07 — CONTRASTE (ce que tu ne recevras PAS)
          ================================================================== -->
-    <section class="section section--fade-in-blue reveal">
+    <section class="section reveal">
       <div class="container">
+        <div class="eyebrow"><span class="eyebrow__num">06</span><span class="eyebrow__rule"></span></div>
         <h2 class="section-title">Ի՞նչ ՉԵՍ ստանալու FORMULA-ում</h2>
         <div class="cross-list">
-          <div class="cross-item"><span aria-hidden="true">✖</span><span>Ժամերով տեսություն, որը դժվար է կիրառել</span></div>
-          <div class="cross-item"><span aria-hidden="true">✖</span><span>Բարդ մարքեթինգային տերմիններ, որոնք միայն ավելի են խճճում</span></div>
-          <div class="cross-item"><span aria-hidden="true">✖</span><span>«Կախարդական» խոստումներ, թե մեկ Reel-ից հարյուրավոր վաճառքներ կունենաս</span></div>
+          <div class="cross-item"><span class="mark mark--muted"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></span><span>Ժամերով տեսություն, որը դժվար է կիրառել</span></div>
+          <div class="cross-item"><span class="mark mark--muted"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></span><span>Բարդ մարքեթինգային տերմիններ, որոնք միայն ավելի են խճճում</span></div>
+          <div class="cross-item"><span class="mark mark--muted"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></span><span>«Կախարդական» խոստումներ, թե մեկ Reel-ից հարյուրավոր վաճառքներ կունենաս</span></div>
         </div>
         <div class="instead">
           <div class="instead__label">Փոխարենը՝</div>
-          <div class="instead__row"><span class="instead__mark" aria-hidden="true">✔</span><span>Պարզ, կիրառելի համակարգ, որը կկարողանաս ներդնել քո բիզնեսում հենց առաջին իսկ օրվանից</span></div>
+          <div class="instead__row"><span class="mark mark--blue"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span>Պարզ, կիրառելի համակարգ, որը կկարողանաս ներդնել քո բիզնեսում հենց առաջին իսկ օրվանից</span></div>
         </div>
       </div>
     </section>
@@ -179,16 +247,21 @@
          08 — PRICING
          ================================================================== -->
     <section id="pricing" class="pricing reveal">
-      <div class="pricing__card">
-        <div class="pricing__badge">ՀԱՏՈՒԿ ԱՌԱՋԱՐԿ</div>
-        <h2 class="pricing__title">Հատուկ առաջարկ</h2>
-        <div class="pricing__old">59.000 դրամ</div>
-        <div class="pricing__now">45.000 դրամ</div>
-        <div class="pricing__deadline">Միայն մինչև սեպտեմբերի 30-ը</div>
-        <div class="pricing__gift">🎁 Նվեր՝ 10.000 դրամի վաուչեր, որը կարող ես օգտագործել նոյեմբերին մեկնարկող INSTASMM դասընթացին միանալիս։</div>
-        <p class="pricing__text">Եթե ուզում ես, որ քո կոնտենտը ոչ միայն դիտումներ հավաքի, այլ նաև բերի իրական վաճառքներ — FORMULA-ն հենց այդ համակարգն է։</p>
-        <!-- CTA achat -->
-        <a href="#" class="cta js-cta">Միացիր FORMULA-ին այսօր</a>
+      <div class="container">
+        <div class="eyebrow eyebrow--center"><span class="eyebrow__num">07</span><span class="eyebrow__rule"></span></div>
+        <div class="pricing__card">
+          <div class="pricing__badge">ՀԱՏՈՒԿ ԱՌԱՋԱՐԿ</div>
+          <h2 class="pricing__title">Հատուկ առաջարկ</h2>
+          <div class="pricing__price">
+            <span class="pricing__old">59.000 դրամ</span>
+            <span class="pricing__now">45.000 <span class="pricing__cur">դրամ</span></span>
+          </div>
+          <div class="pricing__deadline"><svg class="ic ic--sm" aria-hidden="true"><use href="#i-clock"/></svg> Միայն մինչև սեպտեմբերի 30-ը</div>
+          <div class="pricing__gift"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg><span>Նվեր՝ 10.000 դրամի վաուչեր, որը կարող ես օգտագործել նոյեմբերին մեկնարկող INSTASMM դասընթացին միանալիս։</span></div>
+          <p class="pricing__text">Եթե ուզում ես, որ քո կոնտենտը ոչ միայն դիտումներ հավաքի, այլ նաև բերի իրական վաճառքներ — FORMULA-ն հենց այդ համակարգն է։</p>
+          <!-- CTA achat -->
+          <a href="#" class="cta cta--lg js-cta">Միացիր FORMULA-ին այսօր <svg class="ic ic--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
       </div>
     </section>
 
@@ -198,9 +271,8 @@
     <section id="final" class="final reveal">
       <div class="final__inner">
         <p class="final__title">Քո առաջին վաճառքը սկսվում է ոչ թե հաջորդ հրապարակումից, այլ <span class="accent">այն համակարգից, որը կկառուցես այսօր</span></p>
-        <div class="final__hand" aria-hidden="true">👇</div>
         <!-- CTA achat -->
-        <a href="#" class="cta cta--lg js-cta">Սկսիր հենց հիմա՝ 45.000 դրամով</a>
+        <a href="#" class="cta cta--lg js-cta">Սկսիր հենց հիմա՝ 45.000 դրամով <svg class="ic ic--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </section>
 
