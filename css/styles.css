@@ -87,7 +87,7 @@ img { max-width: 100%; display: block; }
   padding: clamp(48px,7vw,96px) clamp(20px,5vw,64px) clamp(56px,7vw,104px);
   background:
     radial-gradient(120% 80% at 50% -10%, rgba(37,168,240,0.28), transparent 60%),
-    radial-gradient(60% 40% at 85% 15%, rgba(108,92,255,0.14), transparent 70%),
+    radial-gradient(55% 45% at 88% 12%, rgba(108,92,255,0.28), transparent 68%),
     var(--bg);
   border-bottom: 1px solid rgba(37,168,240,0.16);
 }
@@ -254,12 +254,13 @@ img { max-width: 100%; display: block; }
   display: grid;
   gap: 14px;
 }
-/* Carte AI mise en avant (accent violet) */
+/* Carte AI mise en avant (accent violet bien visible) */
 .feature-card--ai {
-  background: linear-gradient(180deg, rgba(108,92,255,0.10), rgba(255,255,255,0.02));
-  border: 1px solid rgba(108,92,255,0.34);
-  box-shadow: 0 0 34px rgba(108,92,255,0.16);
+  background: linear-gradient(180deg, rgba(108,92,255,0.20), rgba(108,92,255,0.05));
+  border: 1px solid rgba(108,92,255,0.6);
+  box-shadow: 0 0 44px rgba(108,92,255,0.32);
 }
+.feature-card--ai .feature-card__text { color: #e9e6ff; }
 .feature-card__icon {
   width: 46px; height: 46px;
   border-radius: 12px;
@@ -269,8 +270,9 @@ img { max-width: 100%; display: block; }
   border: 1px solid rgba(37,168,240,0.34);
 }
 .feature-card--ai .feature-card__icon {
-  background: rgba(108,92,255,0.18);
-  border: 1px solid rgba(108,92,255,0.4);
+  background: rgba(108,92,255,0.32);
+  border: 1px solid rgba(108,92,255,0.7);
+  box-shadow: 0 0 20px rgba(108,92,255,0.4);
 }
 .feature-card__text {
   font-size: 16px;
@@ -285,14 +287,21 @@ img { max-width: 100%; display: block; }
 .ai-panel {
   padding: clamp(22px, 3vw, 38px);
   border-radius: 24px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
-  border: 1px solid rgba(37,168,240,0.28);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, rgba(108,92,255,0.12), rgba(255,255,255,0.02));
+  border: 1px solid rgba(108,92,255,0.45);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(108,92,255,0.18);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 32px;
   align-items: center;
 }
+/* Halo violet sur toute la section IA (le reste du site reste bleu) */
+#ai.section--glow {
+  background:
+    radial-gradient(70% 55% at 80% 12%, rgba(108,92,255,0.22), transparent 62%),
+    radial-gradient(80% 60% at 15% 8%, rgba(37,168,240,0.10), transparent 65%);
+}
+
 .ai-panel__col { display: grid; gap: 18px; }
 .badge {
   justify-self: start;
@@ -313,28 +322,36 @@ img { max-width: 100%; display: block; }
   color: var(--head);
 }
 .ai-panel__text { margin: 0; font-size: 16px; line-height: 1.65; color: var(--muted); }
-.ai-panel__label { font-size: 16px; font-weight: 700; color: var(--blue); }
+.ai-panel__label { font-size: 16px; font-weight: 700; color: var(--purple-txt); }
 .spark-list { display: grid; gap: 10px; }
 .spark-item { display: flex; gap: 12px; align-items: flex-start; }
-.spark-item span:last-child { font-size: 16px; line-height: 1.55; color: #b6c6d6; }
-/* Visuel AI (grille néon) */
+/* Puces violettes (signal « IA ») à la place de l'emoji */
+.spark-item span:first-child { font-size: 0; line-height: 1.55; }
+.spark-item span:first-child::before {
+  content: "◆";
+  font-size: 13px;
+  color: var(--purple);
+  text-shadow: 0 0 10px rgba(108,92,255,0.7);
+}
+.spark-item span:last-child { font-size: 16px; line-height: 1.55; color: #c4bdf0; }
+/* Visuel AI (grille néon violette) */
 .ai-visual {
   min-height: 300px;
   border-radius: 18px;
-  border: 1px solid rgba(37,168,240,0.3);
+  border: 1px solid rgba(108,92,255,0.45);
   background:
-    radial-gradient(70% 60% at 50% 40%, rgba(37,168,240,0.28), rgba(5,7,12,0.9)),
-    repeating-linear-gradient(90deg, rgba(37,168,240,0.10) 0 1px, transparent 1px 26px),
-    repeating-linear-gradient(0deg,  rgba(37,168,240,0.10) 0 1px, transparent 1px 26px);
+    radial-gradient(70% 60% at 50% 40%, rgba(108,92,255,0.34), rgba(5,7,12,0.9)),
+    repeating-linear-gradient(90deg, rgba(108,92,255,0.12) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(0deg,  rgba(108,92,255,0.12) 0 1px, transparent 1px 26px);
   display: grid;
   place-items: center;
-  box-shadow: inset 0 0 60px rgba(37,168,240,0.2);
+  box-shadow: inset 0 0 60px rgba(108,92,255,0.24);
 }
 .ai-visual span {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.16em;
-  color: #8fb6d4;
+  color: #c9bff5;
   background: rgba(5,7,12,0.7);
   padding: 8px 12px;
   border-radius: 8px;
@@ -344,7 +361,7 @@ img { max-width: 100%; display: block; }
   font-size: 15px;
   line-height: 1.7;
   color: #8ea0b3;
-  border-left: 2px solid rgba(37,168,240,0.5);
+  border-left: 2px solid rgba(108,92,255,0.6);
   padding-left: 16px;
 }
 
