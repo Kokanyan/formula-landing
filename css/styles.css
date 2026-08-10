@@ -417,62 +417,86 @@ img, svg { display: block; max-width: 100%; }
 .instead__row span:last-child { font-size: 17px; line-height: 1.55; color: #dfeaf7; }
 
 /* =========================================================================
-   AUTRICE / FORMATRICE
+   ÉQUIPE / AUTEURS
    ========================================================================= */
-.author {
+.team { display: grid; gap: clamp(36px, 5vw, 64px); }
+.person {
   display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: clamp(28px, 4vw, 56px);
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(26px, 4vw, 52px);
   align-items: center;
 }
-.author__media {
+.person--reverse .person__media { order: 2; }   /* alterne le côté de la photo */
+
+.person__media {
   position: relative;
   margin: 0;
   border-radius: 22px;
   padding: 1px;
-  background: linear-gradient(160deg, var(--blue-line), var(--purple-line));
+  background: linear-gradient(160deg, var(--blue-line), rgba(139,123,255,0.25));
+  align-self: stretch;
+  min-height: 320px;
 }
-.author__media::before {
-  content: ""; position: absolute; inset: -18px -18px auto auto;
-  width: 62%; height: 62%; z-index: -1;
-  background: radial-gradient(closest-side, rgba(58,169,242,0.28), transparent);
+.person--ai .person__media { background: linear-gradient(160deg, var(--purple-line), rgba(58,169,242,0.22)); }
+.person__media::before {
+  content: ""; position: absolute; inset: -16px -16px auto auto;
+  width: 58%; height: 58%; z-index: -1;
+  background: radial-gradient(closest-side, rgba(58,169,242,0.26), transparent);
   filter: blur(6px);
 }
-.author__media img {
+.person--ai .person__media::before { background: radial-gradient(closest-side, rgba(139,123,255,0.30), transparent); }
+.person__media img {
   width: 100%; height: 100%;
   border-radius: 21px;
   object-fit: cover;
   display: block;
 }
-.author__body { display: grid; gap: 12px; align-content: center; }
-.author__eyebrow {
+/* Placeholder tant que la vraie photo n'est pas déposée */
+.person__ph { display: none; }
+.person__media.is-empty {
+  display: grid; place-items: center; min-height: 380px;
+  border-radius: 21px;
+  background:
+    radial-gradient(70% 60% at 50% 40%, rgba(139,123,255,0.18), transparent 70%),
+    rgba(255,255,255,0.02);
+}
+.person__media.is-empty .person__ph {
+  display: grid; justify-items: center; gap: 8px;
+  color: var(--purple);
+}
+.person__media.is-empty .person__ph .ic { width: 34px; height: 34px; }
+.person__media.is-empty .person__ph small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--muted2); }
+
+.person__body { display: grid; gap: 11px; align-content: center; }
+.person__eyebrow {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--blue);
 }
-.author__name {
+.person--ai .person__eyebrow { color: var(--purple); }
+.person__name {
   margin: 2px 0 0;
-  font-size: clamp(28px, 3.6vw, 42px);
+  font-size: clamp(26px, 3.4vw, 40px);
   font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
   color: var(--title);
 }
-.author__role { margin: 0; font-size: 16px; font-weight: 600; color: #b7abff; }
-.author__bio  { margin: 6px 0 0; max-width: 46ch; font-size: 16px; line-height: 1.6; color: var(--text); }
-.author__facts {
-  display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center;
-  margin: 10px 0 4px;
+.person__role { margin: 0; font-size: 16px; font-weight: 600; color: var(--blue); }
+.person--ai .person__role { color: #b7abff; }
+.person__text { margin: 6px 0 0; max-width: 48ch; font-size: 16px; line-height: 1.6; color: var(--text); }
+.person__facts {
+  display: grid; gap: 14px;
+  margin: 12px 0 2px;
   padding: 16px 0;
   border-top: 1px solid var(--hair);
   border-bottom: 1px solid var(--hair);
 }
-.author__fact { display: flex; align-items: center; gap: 11px; font-size: 15px; color: var(--text); }
-.author__fact--stat { gap: 8px; }
-.author__stat {
-  font-size: 26px; font-weight: 800; letter-spacing: -0.01em;
-  color: var(--blue);
-}
-.author__note { margin: 6px 0 0; max-width: 52ch; font-size: 15px; line-height: 1.65; color: var(--muted); }
+.person__fact { display: flex; align-items: center; gap: 12px; font-size: 15px; line-height: 1.4; color: var(--text); }
+.person__stat-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.person__stat { font-size: 30px; font-weight: 800; letter-spacing: -0.01em; color: var(--blue); }
+.person__stat--purple { color: var(--purple); }
+.person__stat-row span:last-child { font-size: 14px; color: var(--muted); max-width: 42ch; }
+.person__note { margin: 6px 0 0; max-width: 52ch; font-size: 15px; line-height: 1.65; color: var(--muted); }
 
 /* =========================================================================
    PRICING
@@ -579,8 +603,9 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 860px) {
   .ai-panel { grid-template-columns: 1fr; }
   .ai-visual { min-height: 260px; order: -1; }
-  .author { grid-template-columns: 1fr; gap: 26px; }
-  .author__media { justify-self: center; max-width: 340px; width: 100%; }
+  .person { grid-template-columns: 1fr; gap: 24px; }
+  .person--reverse .person__media { order: -1; }   /* photo au-dessus sur mobile */
+  .person__media { justify-self: center; max-width: 360px; width: 100%; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
