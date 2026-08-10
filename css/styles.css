@@ -422,20 +422,21 @@ img, svg { display: block; max-width: 100%; }
 .team { display: grid; gap: clamp(36px, 5vw, 64px); }
 .person {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 240px 1fr;   /* photo plus petite, taille fixe */
   gap: clamp(26px, 4vw, 52px);
   align-items: center;
 }
-.person--reverse .person__media { order: 2; }   /* alterne le côté de la photo */
+.person--reverse { grid-template-columns: 1fr 240px; }  /* photo à droite, même taille */
+.person--reverse .person__media { order: 2; }
+.person--reverse .person__body { order: 1; }
 
 .person__media {
   position: relative;
   margin: 0;
-  border-radius: 22px;
+  border-radius: 20px;
   padding: 1px;
   background: linear-gradient(160deg, var(--blue-line), rgba(139,123,255,0.25));
-  align-self: stretch;
-  min-height: 320px;
+  aspect-ratio: 4 / 5;   /* format identique pour les deux photos */
 }
 .person--ai .person__media { background: linear-gradient(160deg, var(--purple-line), rgba(58,169,242,0.22)); }
 .person__media::before {
@@ -447,15 +448,16 @@ img, svg { display: block; max-width: 100%; }
 .person--ai .person__media::before { background: radial-gradient(closest-side, rgba(139,123,255,0.30), transparent); }
 .person__media img {
   width: 100%; height: 100%;
-  border-radius: 21px;
+  border-radius: 19px;
   object-fit: cover;
+  object-position: center top;   /* garde le visage bien cadré */
   display: block;
 }
 /* Placeholder tant que la vraie photo n'est pas déposée */
 .person__ph { display: none; }
 .person__media.is-empty {
-  display: grid; place-items: center; min-height: 380px;
-  border-radius: 21px;
+  display: grid; place-items: center;
+  border-radius: 19px;
   background:
     radial-gradient(70% 60% at 50% 40%, rgba(139,123,255,0.18), transparent 70%),
     rgba(255,255,255,0.02);
@@ -603,9 +605,9 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 860px) {
   .ai-panel { grid-template-columns: 1fr; }
   .ai-visual { min-height: 260px; order: -1; }
-  .person { grid-template-columns: 1fr; gap: 24px; }
+  .person, .person--reverse { grid-template-columns: 1fr; gap: 22px; }
   .person--reverse .person__media { order: -1; }   /* photo au-dessus sur mobile */
-  .person__media { justify-self: center; max-width: 360px; width: 100%; }
+  .person__media { justify-self: center; max-width: 260px; width: 100%; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
