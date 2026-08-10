@@ -229,6 +229,8 @@ img, svg { display: block; max-width: 100%; }
 }
 .hero__lead { margin: 0; max-width: var(--measure); font-size: clamp(16px,1.6vw,19px); line-height: 1.68; color: var(--text); }
 .hero__sub  { margin: 0; max-width: var(--measure); font-size: clamp(14px,1.4vw,16px); line-height: 1.68; color: var(--muted); }
+/* Mise en couleur d'un passage (demande partenaire) */
+.hl { color: #7cc4f4; font-weight: 500; }
 .hero__actions {
   margin-top: 10px;
   display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; justify-content: center;
@@ -298,6 +300,19 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--blue-line);
 }
 .feature-card__text { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.5; color: var(--head); }
+.feature-card__desc { margin: -6px 0 0; font-size: 14px; font-weight: 400; line-height: 1.55; color: var(--muted); }
+
+/* Paragraphe accentué en fin de section (note) */
+.section-note {
+  margin: clamp(22px,3vw,32px) 0 0;
+  max-width: 760px;
+  font-size: clamp(16px,1.7vw,18px);
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--head);
+  padding-left: 18px;
+  border-left: 2px solid var(--blue-line);
+}
 
 /* Carte AI : accent violet net */
 .feature-card--ai {
