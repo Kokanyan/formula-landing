@@ -12,7 +12,7 @@
    Exemple : const PAYMENT_URL = "https://buy.stripe.com/xxxx";
              const PAYMENT_URL = "https://forms.gle/xxxx";
 ------------------------------------------------------------------------- */
-const PAYMENT_URL = "#"; // <-- METS TON LIEN ICI
+const PAYMENT_URL = "https://www.instagram.com/formula.registration/"; // <-- LIEN D'INSCRIPTION
 
 // Ouvrir le lien dans un nouvel onglet ? (true = oui). Mets false si tu
 // préfères rester dans le même onglet.
