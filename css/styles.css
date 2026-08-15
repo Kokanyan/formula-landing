@@ -201,12 +201,14 @@ img, svg { display: block; max-width: 100%; }
   display: grid; gap: 22px; justify-items: center;
 }
 .hero__logo {
-  width: 96px; height: 96px;
-  border-radius: 24px;
+  width: clamp(150px, 24vw, 200px);
+  height: clamp(150px, 24vw, 200px);
+  border-radius: 30px;
   padding: 1px;
   background: linear-gradient(150deg, var(--blue-line), var(--purple-line));
+  box-shadow: 0 0 70px rgba(58,169,242,0.30), 0 24px 70px rgba(0,0,0,0.55);
 }
-.hero__logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 23px; }
+.hero__logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 29px; }
 .hero__kicker {
   margin: 4px 0 0;
   font-family: var(--font-mono);
@@ -541,6 +543,19 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--blue-line); background: var(--blue-soft);
 }
 .pricing__deadline .ic { color: var(--blue); }
+.pricing__reserve {
+  width: 100%;
+  display: grid; gap: 5px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid var(--blue-line);
+  background: var(--blue-soft);
+}
+.pricing__reserve-lead { margin: 0; font-size: 16px; font-weight: 700; color: var(--head); }
+.pricing__reserve-lead b { color: var(--blue); font-weight: 800; }
+.pricing__reserve-sub { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+
 .pricing__gift {
   width: 100%;
   display: flex; gap: 13px; align-items: flex-start; text-align: left;
