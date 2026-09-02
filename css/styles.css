@@ -22,6 +22,10 @@
   --purple-2:    #6c5cff;
   --purple-soft: rgba(139,123,255,0.14);
   --purple-line: rgba(139,123,255,0.34);
+  --red:         #ff6b6b;   /* urgence (deadline) */
+  --red-text:    #ff8f8f;
+  --red-soft:    rgba(255,107,107,0.12);
+  --red-line:    rgba(255,107,107,0.42);
 
   --title: #f4f8ff;
   --head:  #eaf1fb;
@@ -538,11 +542,11 @@ img, svg { display: block; max-width: 100%; }
 .pricing__cur { font-size: 0.42em; font-weight: 700; color: var(--blue); letter-spacing: 0; }
 .pricing__deadline {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 14px; color: var(--text);
+  font-size: 14px; font-weight: 600; color: var(--red-text);
   padding: 8px 16px; border-radius: 999px;
-  border: 1px solid var(--blue-line); background: var(--blue-soft);
+  border: 1px solid var(--red-line); background: var(--red-soft);
 }
-.pricing__deadline .ic { color: var(--blue); }
+.pricing__deadline .ic { color: var(--red); }
 .pricing__reserve {
   width: 100%;
   display: grid; gap: 5px;
