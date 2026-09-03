@@ -79,8 +79,8 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---- Layout ------------------------------------------------------------ */
 .section { padding: var(--sec-y) var(--pad-x); }
-/* 1re section après le hero : marge haute réduite (plus proche du hero) */
-#start { padding-top: clamp(22px, 3vw, 40px); }
+/* 1re section après le hero : marge haute minimale (collée au hero) */
+#start { padding-top: clamp(10px, 2vw, 24px); }
 .section--tint { background: var(--bg-2); }
 .container { max-width: var(--maxw); margin: 0 auto; }
 
@@ -130,23 +130,23 @@ img, svg { display: block; max-width: 100%; }
 .nav__inner {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 15px var(--pad-x);
+  padding: 8px var(--pad-x);
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav__brand {
   font-family: var(--font-mono);
   font-weight: 600;
-  letter-spacing: 0.34em;
-  font-size: 15px;
+  letter-spacing: 0.32em;
+  font-size: 14px;
   color: var(--title);
-  padding-left: 0.34em;
+  padding-left: 0.32em;
 }
 .nav__cta {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 7px;
   font-family: var(--font-arm);
-  font-weight: 600; font-size: 14px;
+  font-weight: 600; font-size: 13.5px;
   color: var(--head);
-  padding: 9px 16px;
+  padding: 7px 14px;
   border: 1px solid var(--hair-2);
   border-radius: 999px;
   transition: border-color .2s ease, background .2s ease, color .2s ease;
@@ -183,7 +183,7 @@ img, svg { display: block; max-width: 100%; }
    ========================================================================= */
 .hero {
   position: relative;
-  padding: clamp(22px,4vw,44px) var(--pad-x) clamp(28px,4vw,52px);
+  padding: clamp(6px,2vw,20px) var(--pad-x) clamp(12px,2vw,24px);
   text-align: center;
   overflow: hidden;
   border-bottom: 1px solid var(--hair);
@@ -204,11 +204,11 @@ img, svg { display: block; max-width: 100%; }
 .hero__inner {
   position: relative;
   max-width: 880px; margin: 0 auto;
-  display: grid; gap: 18px; justify-items: center;
+  display: grid; gap: 12px; justify-items: center;
 }
 .hero__logo {
-  width: clamp(132px, 21vw, 176px);
-  height: clamp(132px, 21vw, 176px);
+  width: clamp(108px, 17vw, 148px);
+  height: clamp(108px, 17vw, 148px);
   border-radius: 30px;
   padding: 1px;
   background: linear-gradient(150deg, var(--blue-line), var(--purple-line));
@@ -223,8 +223,8 @@ img, svg { display: block; max-width: 100%; }
 }
 .hero__title {
   margin: 0;
-  font-size: clamp(30px, 5vw, 54px);
-  line-height: 1.12;
+  font-size: clamp(27px, 4.8vw, 52px);
+  line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.025em;
   color: var(--title);
@@ -236,7 +236,7 @@ img, svg { display: block; max-width: 100%; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero__lead { margin: 0; max-width: var(--measure); font-size: clamp(16px,1.6vw,19px); line-height: 1.68; color: var(--text); }
-.hero__sub  { margin: 0; max-width: var(--measure); font-size: clamp(14px,1.4vw,16px); line-height: 1.68; color: var(--muted); }
+.hero__sub  { margin: 0; max-width: var(--measure); font-size: clamp(13.5px,1.3vw,15px); line-height: 1.5; color: var(--muted); }
 /* Mise en couleur d'un passage (demande partenaire) */
 .hl { color: #7cc4f4; font-weight: 500; }
 .hero__actions {
