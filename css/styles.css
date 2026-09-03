@@ -79,6 +79,8 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---- Layout ------------------------------------------------------------ */
 .section { padding: var(--sec-y) var(--pad-x); }
+/* 1re section après le hero : marge haute réduite (plus proche du hero) */
+#start { padding-top: clamp(22px, 3vw, 40px); }
 .section--tint { background: var(--bg-2); }
 .container { max-width: var(--maxw); margin: 0 auto; }
 
