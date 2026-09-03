@@ -181,7 +181,7 @@ img, svg { display: block; max-width: 100%; }
    ========================================================================= */
 .hero {
   position: relative;
-  padding: clamp(56px,10vw,120px) var(--pad-x) clamp(64px,9vw,120px);
+  padding: clamp(22px,4vw,44px) var(--pad-x) clamp(28px,4vw,52px);
   text-align: center;
   overflow: hidden;
   border-bottom: 1px solid var(--hair);
@@ -202,11 +202,11 @@ img, svg { display: block; max-width: 100%; }
 .hero__inner {
   position: relative;
   max-width: 880px; margin: 0 auto;
-  display: grid; gap: 22px; justify-items: center;
+  display: grid; gap: 18px; justify-items: center;
 }
 .hero__logo {
-  width: clamp(150px, 24vw, 200px);
-  height: clamp(150px, 24vw, 200px);
+  width: clamp(132px, 21vw, 176px);
+  height: clamp(132px, 21vw, 176px);
   border-radius: 30px;
   padding: 1px;
   background: linear-gradient(150deg, var(--blue-line), var(--purple-line));
@@ -245,6 +245,21 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--font-mono); font-size: 14px; font-weight: 500; color: var(--head);
 }
 .hero__price-note { color: var(--muted2); }
+
+/* Indicateur de défilement (chevron animé) sous le hero */
+.hero__scroll {
+  margin-top: 4px;
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  color: var(--muted);
+  border: 1px solid var(--hair-2);
+  border-radius: 999px;
+  animation: bob 1.8s ease-in-out infinite;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.hero__scroll:hover { color: var(--blue); border-color: var(--blue-line); background: var(--blue-soft); }
+.hero__scroll .ic { width: 20px; height: 20px; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
 /* =========================================================================
    MARQUEURS (pastilles d'icône réutilisables)
@@ -616,6 +631,7 @@ img, svg { display: block; max-width: 100%; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .cta, .nav__cta, .feature-card { transition: none; }
   .ai-orb__ring--1, .ai-orb__ring--2, .ai-orb__core { animation: none; }
+  .hero__scroll { animation: none; }
 }
 
 /* =========================================================================
