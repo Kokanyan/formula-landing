@@ -588,7 +588,23 @@ img, svg { display: block; max-width: 100%; }
 }
 .pricing__gift .ic { color: #b7abff; margin-top: 1px; }
 .pricing__text { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.pricing__ctas { width: 100%; display: grid; gap: 10px; justify-items: center; }
 .pricing .cta { width: 100%; max-width: 400px; }
+
+/* Bouton secondaire (questions) — couleur distincte du bleu */
+.cta--secondary {
+  background: rgba(255,255,255,0.05);
+  color: var(--head);
+  border: 1px solid var(--hair-2);
+  box-shadow: none;
+}
+.cta--secondary:hover {
+  background: rgba(139,123,255,0.12);   /* léger voile violet au survol */
+  border-color: var(--purple-line);
+  color: #fff;
+  filter: none;
+  box-shadow: none;
+}
 
 /* =========================================================================
    CTA FINAL
