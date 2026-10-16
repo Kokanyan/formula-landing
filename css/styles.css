@@ -7,12 +7,12 @@
 
 /* ---- Design tokens ----------------------------------------------------- */
 :root {
-  --bg:        #06070d;   /* fond principal */
-  --bg-2:      #090b13;   /* fond alterné (sections tint) */
-  --surface:   rgba(255,255,255,0.024);
-  --surface-2: rgba(255,255,255,0.04);
-  --hair:      rgba(255,255,255,0.09);   /* hairline standard */
-  --hair-2:    rgba(255,255,255,0.14);
+  --bg:        #0b0f1a;   /* bleu nuit profond (plus riche que le noir pur) */
+  --bg-2:      #111724;   /* fond alterné — un cran plus clair pour détacher */
+  --surface:   rgba(255,255,255,0.05);    /* cartes bien visibles */
+  --surface-2: rgba(255,255,255,0.075);
+  --hair:      rgba(255,255,255,0.13);   /* hairline standard */
+  --hair-2:    rgba(255,255,255,0.22);
 
   --blue:        #3aa9f2;
   --blue-2:      #1f8fe0;
@@ -27,11 +27,11 @@
   --red-soft:    rgba(255,107,107,0.12);
   --red-line:    rgba(255,107,107,0.42);
 
-  --title: #f4f8ff;
-  --head:  #eaf1fb;
-  --text:  #c3cddd;
-  --muted: #8b97ab;
-  --muted2:#69748a;
+  --title: #f6f9ff;
+  --head:  #eef3fb;
+  --text:  #d4dde9;   /* corps plus clair et lisible */
+  --muted: #a7b2c4;   /* texte secondaire remonté en contraste */
+  --muted2:#8a97aa;
 
   --font-arm:  'Noto Sans Armenian', system-ui, -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
