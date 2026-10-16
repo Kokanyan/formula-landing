@@ -587,6 +587,13 @@ img, svg { display: block; max-width: 100%; }
   font-size: 14.5px; line-height: 1.6;
 }
 .pricing__gift .ic { color: #b7abff; margin-top: 1px; }
+.pricing__gift a {
+  color: #cabfff; font-weight: 700;
+  text-decoration: underline; text-underline-offset: 2px;
+  text-decoration-color: rgba(139,123,255,0.5);
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+.pricing__gift a:hover { color: #fff; text-decoration-color: #fff; }
 .pricing__text { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
 .pricing__ctas { width: 100%; display: grid; gap: 10px; justify-items: center; }
 .pricing .cta { width: 100%; max-width: 400px; }
